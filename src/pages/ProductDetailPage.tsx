@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { products } from "@/data/products";
 import { Button } from "@/components/ui/button";
+import InterestDialog from "@/components/product/InterestDialog";
 
 const ProductDetailPage = () => {
   const { id } = useParams();
@@ -107,6 +108,7 @@ const ProductDetailPage = () => {
                 <Button variant="outline" size="icon" className="h-12 w-12 border-border">
                   <Heart className="w-4 h-4" />
                 </Button>
+                <InterestDialog productName={product.name} productPrice={product.price} />
               </div>
 
               {/* Trust */}
