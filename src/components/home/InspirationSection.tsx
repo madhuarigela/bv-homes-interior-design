@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import categoryBedroom from "@/assets/category-bedroom.jpg";
 import categoryDining from "@/assets/category-dining.jpg";
 import heroImage from "@/assets/hero-living-room.jpg";
@@ -35,7 +34,7 @@ const InspirationSection = () => {
                   {room.label}
                 </span>
               </div>
-            </Link>
+            </a>
           ))}
         </div>
       </div>
