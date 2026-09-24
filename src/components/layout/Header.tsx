@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Instagram, MapPin, MessageCircle, Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -42,9 +41,9 @@ const Header = () => {
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link
+              <a
                 key={link.label}
-                to={link.to}
+                href={link.to}
                 className="text-sm font-medium tracking-wide uppercase text-foreground/80 hover:text-foreground transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-accent after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left"
               >
                 {link.label}
@@ -72,9 +71,9 @@ const Header = () => {
         <div className="lg:hidden border-t border-border bg-background animate-fade-in">
           <nav className="flex flex-col py-4 px-6 gap-1">
             {navLinks.map((link) => (
-              <Link
+              <a
                 key={link.label}
-                to={link.to}
+                href={link.to}
                 onClick={() => setMobileOpen(false)}
                 className="py-3 text-sm font-medium tracking-wide uppercase text-foreground/80 hover:text-foreground border-b border-border/50 transition-colors"
               >
