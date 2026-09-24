@@ -186,7 +186,7 @@ export const products: Product[] = [
     rating: 4.5,
     reviews: 234,
     trending: true,
-  },,
+  },
   {
     id: "8",
     name: "Siena Accent Lounge Chair",
