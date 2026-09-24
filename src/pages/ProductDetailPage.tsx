@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { ArrowLeft, MessageCircle, Star } from "lucide-react";
 import { useState } from "react";
 import Header from "@/components/layout/Header";
@@ -19,7 +19,7 @@ const ProductDetailPage = () => {
         <Header />
         <div className="pt-32 text-center">
           <h1 className="font-display text-2xl mb-4">Product Not Found</h1>
-          <Link to="/shop" className="text-accent underline">Back to Shop</Link>
+          <a href="/shop" className="text-accent underline">Back to Shop</a>
         </div>
         <Footer />
       </div>
@@ -56,9 +56,9 @@ const ProductDetailPage = () => {
       <Header />
       <main className="pt-24 lg:pt-32 pb-20">
         <div className="container mx-auto px-4 lg:px-8">
-          <Link to="/shop" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-8 transition-colors">
+          <a href="/shop" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-8 transition-colors">
             <ArrowLeft className="w-4 h-4" /> Back to Shop
-          </Link>
+          </a>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
             <div>
@@ -140,7 +140,7 @@ const ProductDetailPage = () => {
                       <img src={p.image} alt={p.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <h3 className="font-display text-sm font-medium group-hover:text-accent transition-colors">{p.name}</h3>
-                  </Link>
+                  </a>
                 ))}
               </div>
             </div>
