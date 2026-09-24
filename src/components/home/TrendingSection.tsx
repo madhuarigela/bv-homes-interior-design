@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { products } from "@/data/products";
 
@@ -25,7 +24,7 @@ const TrendingSection = () => {
                 <p className="text-muted-foreground text-sm max-w-lg">{product.description}</p>
               </div>
               <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
-            </Link>
+            </a>
           ))}
         </div>
       </div>
