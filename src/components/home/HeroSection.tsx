@@ -34,14 +34,14 @@ const HeroSection = () => {
               to="/shop"
               className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-accent text-accent-foreground text-sm font-medium tracking-wider uppercase rounded-sm hover:bg-accent/90 transition-all duration-300 group"
             >
-              Explore Collection
+              Explore Items
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               to="/shop?category=sofas"
               className="inline-flex items-center justify-center gap-3 px-8 py-4 border border-background/30 text-background text-sm font-medium tracking-wider uppercase rounded-sm hover:bg-background/10 transition-all duration-300"
             >
-              Shop Sofas
+              Buy Sofa
             </Link>
           </div>
         </div>
