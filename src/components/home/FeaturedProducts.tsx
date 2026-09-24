@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Heart, ShoppingBag, Star } from "lucide-react";
 import { products } from "@/data/products";
 import { formatINR } from "@/lib/formatCurrency";
+import { formatINR } from "@/lib/formatCurrency";
 
 const FeaturedProducts = () => {
   const featured = products.filter((p) => p.featured);
