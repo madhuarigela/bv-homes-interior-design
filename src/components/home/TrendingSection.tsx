@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { products } from "@/data/products";
 import { formatINR } from "@/lib/formatCurrency";
+import { formatINR } from "@/lib/formatCurrency";
 
 const TrendingSection = () => {
   const trending = products.filter((p) => p.trending);
