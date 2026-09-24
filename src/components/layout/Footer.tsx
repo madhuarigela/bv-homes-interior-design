@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Instagram, MapPin } from "lucide-react";
 
 const Footer = () => {
@@ -31,12 +30,12 @@ const Footer = () => {
           <div>
             <h4 className="font-display text-lg mb-4">Shop</h4>
             <ul className="space-y-2 text-sm text-primary-foreground/60">
-              <li><Link to="/shop?category=sofas" className="hover:text-primary-foreground transition-colors">Sofas & Seating</Link></li>
-              <li><Link to="/shop?category=beds" className="hover:text-primary-foreground transition-colors">Beds & Bedroom</Link></li>
-              <li><Link to="/shop?category=dining" className="hover:text-primary-foreground transition-colors">Dining Tables</Link></li>
-              <li><Link to="/shop?category=wardrobes" className="hover:text-primary-foreground transition-colors">Wardrobes</Link></li>
-              <li><Link to="/shop?category=office" className="hover:text-primary-foreground transition-colors">Office</Link></li>
-              <li><Link to="/shop?category=decor" className="hover:text-primary-foreground transition-colors">Décor</Link></li>
+              <li><a href="/shop?category=sofas" className="hover:text-primary-foreground transition-colors">Sofas & Seating</a></li>
+              <li><a href="/shop?category=beds" className="hover:text-primary-foreground transition-colors">Beds & Bedroom</a></li>
+              <li><a href="/shop?category=dining" className="hover:text-primary-foreground transition-colors">Dining Tables</a></li>
+              <li><a href="/shop?category=wardrobes" className="hover:text-primary-foreground transition-colors">Wardrobes</a></li>
+              <li><a href="/shop?category=office" className="hover:text-primary-foreground transition-colors">Office</a></li>
+              <li><a href="/shop?category=decor" className="hover:text-primary-foreground transition-colors">Décor</a></li>
             </ul>
           </div>
 
@@ -45,7 +44,7 @@ const Footer = () => {
             <ul className="space-y-2 text-sm text-primary-foreground/60">
               <li><a href="https://maps.app.goo.gl/J6BhG5YMf72SfKBx5" target="_blank" rel="noopener noreferrer" className="hover:text-primary-foreground transition-colors">Visit Store on Maps</a></li>
               <li><a href="https://www.instagram.com/bvhomefurnitures/?stkn=MWtua3I0dXpxZTR6eQ==" target="_blank" rel="noopener noreferrer" className="hover:text-primary-foreground transition-colors">Follow on Instagram</a></li>
-              <li><Link to="/shop" className="hover:text-primary-foreground transition-colors">Browse Furniture</Link></li>
+              <li><a href="/shop" className="hover:text-primary-foreground transition-colors">Browse Furniture</a></li>
             </ul>
           </div>
 
@@ -53,7 +52,7 @@ const Footer = () => {
             <h4 className="font-display text-lg mb-4">Contact</h4>
             <ul className="space-y-2 text-sm text-primary-foreground/60">
               <li><a href="https://wa.me/917702702888?text=Hi%20BVHome%20Furnitures%2C%20I%27d%20like%20to%20know%20more%20about%20your%20furniture." target="_blank" rel="noopener noreferrer" className="hover:text-primary-foreground transition-colors">WhatsApp Enquiry</a></li>
-              <li><Link to="/shop" className="hover:text-primary-foreground transition-colors">Furniture Catalogue</Link></li>
+              <li><a href="/shop" className="hover:text-primary-foreground transition-colors">Furniture Catalogue</a></li>
             </ul>
           </div>
 
