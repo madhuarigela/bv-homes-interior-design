@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { SlidersHorizontal, X, MessageCircle } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -166,7 +166,7 @@ const ShopPage = () => {
                 <span className="text-[10px] uppercase tracking-wider text-accent">
                   View details →
                 </span>
-              </Link>
+              </a>
             ))}
           </div>
 
