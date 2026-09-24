@@ -22,7 +22,7 @@ const InspirationSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
           {rooms.map((room) => (
-            <Link key={room.label} to={room.label.includes("Bedroom") ? "/shop?category=beds" : room.label.includes("Dining") ? "/shop?category=dining" : "/shop?category=sofas"} className="group relative aspect-[4/5] overflow-hidden rounded-sm cursor-pointer">
+            <a key={room.label} href={room.label.includes("Bedroom") ? "/shop?category=beds" : room.label.includes("Dining") ? "/shop?category=dining" : "/shop?category=sofas"} className="group relative aspect-[4/5] overflow-hidden rounded-sm cursor-pointer">
               <img
                 src={room.image}
                 alt={room.label}
