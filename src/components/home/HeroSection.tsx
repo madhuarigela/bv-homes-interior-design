@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import heroImage from "@/assets/hero-living-room.jpg";
 
@@ -30,19 +29,19 @@ const HeroSection = () => {
             Discover handcrafted furniture that transforms spaces into sanctuaries. Each piece is a testament to timeless design and exceptional artistry.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-up" style={{ animationDelay: "0.8s" }}>
-            <Link
-              to="/shop"
+            <a
+              href="/shop"
               className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-accent text-accent-foreground text-sm font-medium tracking-wider uppercase rounded-sm hover:bg-accent/90 transition-all duration-300 group"
             >
               Explore Items
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              to="/shop?category=sofas"
+            </a>
+            <a
+              href="/shop?category=sofas"
               className="inline-flex items-center justify-center gap-3 px-8 py-4 border border-background/30 text-background text-sm font-medium tracking-wider uppercase rounded-sm hover:bg-background/10 transition-all duration-300"
             >
               Buy Sofa
-            </Link>
+            </a>
           </div>
         </div>
       </div>
