@@ -2,7 +2,6 @@ import { Truck, RefreshCw, Headphones } from "lucide-react";
 
 const badges = [
   { icon: Truck, title: "Free Delivery", desc: "On orders over ₹40,000" },
-  { icon: ShieldCheck, title: "5-Year Warranty", desc: "On all furniture" },
   { icon: RefreshCw, title: "30-Day Returns", desc: "Hassle-free process" },
   { icon: Headphones, title: "Expert Support", desc: "24/7 design guidance" },
 ];
