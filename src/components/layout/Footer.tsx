@@ -7,7 +7,7 @@ const Footer = () => {
       {/* Newsletter */}
       <div className="border-b border-primary-foreground/10">
         <div className="container mx-auto px-4 lg:px-8 py-16 text-center">
-          <h3 className="font-display text-2xl lg:text-3xl mb-3">Join the BV Homes Family</h3>
+          <h3 className="font-display text-2xl lg:text-3xl mb-3">Join the BVHome Furnitures Family</h3>
           <p className="text-primary-foreground/60 mb-8 max-w-md mx-auto text-sm">
             Be the first to discover new collections, exclusive offers, and interior design inspiration.
           </p>
@@ -57,22 +57,22 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h4 className="font-display text-lg mb-4">BV Homes</h4>
+            <h4 className="font-display text-lg mb-4">BVHome Furnitures</h4>
             <p className="text-sm text-primary-foreground/60 leading-relaxed mb-5">
               Curating beautiful furniture for homes with a focus on craftsmanship, comfort, and timeless design.
             </p>
             <div className="flex items-center gap-3">
-              <a href="https://www.instagram.com/bvhomefurnitures/?stkn=MWtua3I0dXpxZTR6eQ==" target="_blank" rel="noopener noreferrer" aria-label="BV Homes Furniture on Instagram" className="inline-flex items-center gap-2 rounded-sm border border-primary-foreground/15 px-3 py-2 text-xs text-primary-foreground/70 hover:text-primary-foreground hover:border-primary-foreground/40 transition-colors">
+              <a href="https://www.instagram.com/bvhomefurnitures/?stkn=MWtua3I0dXpxZTR6eQ==" target="_blank" rel="noopener noreferrer" aria-label="BVHome Furnitures Furniture on Instagram" className="inline-flex items-center gap-2 rounded-sm border border-primary-foreground/15 px-3 py-2 text-xs text-primary-foreground/70 hover:text-primary-foreground hover:border-primary-foreground/40 transition-colors">
                 <Instagram className="h-4 w-4" /> Instagram
               </a>
-              <a href="https://maps.app.goo.gl/J6BhG5YMf72SfKBx5" target="_blank" rel="noopener noreferrer" aria-label="BV Homes Furniture on Google Maps" className="inline-flex items-center gap-2 rounded-sm border border-primary-foreground/15 px-3 py-2 text-xs text-primary-foreground/70 hover:text-primary-foreground hover:border-primary-foreground/40 transition-colors">
+              <a href="https://maps.app.goo.gl/J6BhG5YMf72SfKBx5" target="_blank" rel="noopener noreferrer" aria-label="BVHome Furnitures Furniture on Google Maps" className="inline-flex items-center gap-2 rounded-sm border border-primary-foreground/15 px-3 py-2 text-xs text-primary-foreground/70 hover:text-primary-foreground hover:border-primary-foreground/40 transition-colors">
                 <MapPin className="h-4 w-4" /> Maps
               </a>
             </div>
           </div>
         </div>
         <div className="border-t border-primary-foreground/10 mt-12 pt-8 text-center text-xs text-primary-foreground/40 tracking-wider">
-          © {new Date().getFullYear()} BV Homes. All rights reserved.
+          © {new Date().getFullYear()} BVHome Furnitures. All rights reserved.
         </div>
       </div>
     </footer>
