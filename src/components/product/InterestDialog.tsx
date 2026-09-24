@@ -79,7 +79,7 @@ const InterestDialog = ({
     const emailBody = encodeURIComponent(
       `Product Inquiry — BV Homes\n\n` +
       `Product: ${productName}\n` +
-      `Price: $${productPrice.toLocaleString()}\n\n` +
+      `Price: ${formatINR(productPrice)}\n\n` +
       `Customer Details\n` +
       `Name: ${form.name}\n` +
       `Email: ${form.email}\n` +
@@ -100,7 +100,7 @@ const InterestDialog = ({
     const userEmailSubject = encodeURIComponent(`Your BV Homes Inquiry: ${productName}`);
     const userEmailBody = encodeURIComponent(
       `Hi ${form.name},\n\n` +
-      `Thank you for your interest in "${productName}" ($${productPrice.toLocaleString()}).\n\n` +
+      `Thank you for your interest in "${productName}" (${formatINR(productPrice)}).\n\n` +
       `We've received your inquiry and our team will get back to you shortly.\n\n` +
       `Best regards,\nBV Homes Team`
     );
