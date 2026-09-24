@@ -18,7 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { toast } from "sonner";
+import { toast } from "sonner";\nimport { formatINR } from "@/lib/formatCurrency";
 
 interface InterestDialogProps {
   productName: string;
@@ -59,7 +59,7 @@ const InterestDialog = ({
 
     const message = `🏠 *BV Homes — Product Inquiry*%0A%0A` +
       `*Product:* ${encodeURIComponent(productName)}%0A` +
-      `*Price:* $${productPrice.toLocaleString()}%0A%0A` +
+      `*Price:* ${encodeURIComponent(formatINR(productPrice))}%0A%0A` +
       `*Customer Details*%0A` +
       `Name: ${encodeURIComponent(form.name)}%0A` +
       `Email: ${encodeURIComponent(form.email)}%0A` +
@@ -156,7 +156,7 @@ const InterestDialog = ({
             <Input
               id="interest-phone"
               type="tel"
-              placeholder="+1 234 567 8900"
+              placeholder="+91 98765 43210"
               value={form.phone}
               onChange={(e) => handleChange("phone", e.target.value)}
               required
@@ -169,11 +169,11 @@ const InterestDialog = ({
                 <SelectValue placeholder="Select budget range" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="under-1000">Under $1,000</SelectItem>
-                <SelectItem value="1000-3000">$1,000 – $3,000</SelectItem>
-                <SelectItem value="3000-5000">$3,000 – $5,000</SelectItem>
-                <SelectItem value="5000-10000">$5,000 – $10,000</SelectItem>
-                <SelectItem value="over-10000">Over $10,000</SelectItem>
+                <SelectItem value="under-25000">Under ₹25,000</SelectItem>
+                <SelectItem value="25000-75000">₹25,000 – ₹75,000</SelectItem>
+                <SelectItem value="75000-150000">₹75,000 – ₹1,50,000</SelectItem>
+                <SelectItem value="150000-300000">₹1,50,000 – ₹3,00,000</SelectItem>
+                <SelectItem value="over-300000">Over ₹3,00,000</SelectItem>
               </SelectContent>
             </Select>
           </div>
