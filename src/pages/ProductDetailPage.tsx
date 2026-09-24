@@ -120,10 +120,6 @@ const ProductDetailPage = () => {
                   Free delivery on this order
                 </div>
                 <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-accent" />
-                  5-year warranty included
-                </div>
-                <div className="flex items-center gap-2">
                   <span className={`w-2 h-2 rounded-full ${product.inStock ? "bg-green-500" : "bg-destructive"}`} />
                   {product.inStock ? "In Stock — Ships in 3-5 days" : "Out of Stock"}
                 </div>
