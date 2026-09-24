@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { products } from "@/data/products";
+import { formatINR } from "@/lib/formatCurrency";
 
 const TrendingSection = () => {
   const trending = products.filter((p) => p.trending);
@@ -29,7 +30,7 @@ const TrendingSection = () => {
                 <p className="text-muted-foreground text-sm max-w-lg">{product.description}</p>
               </div>
               <div className="flex items-center gap-4">
-                <span className="font-display text-2xl font-bold">${product.price.toLocaleString()}</span>
+                <span className="font-display text-2xl font-bold">{formatINR(product.price)}</span>
                 <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
               </div>
             </Link>
