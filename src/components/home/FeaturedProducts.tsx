@@ -17,7 +17,7 @@ const FeaturedProducts = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {featured.map((product) => (
-            <Link key={product.id} to={`/product/${product.id}`} className="group hover-lift">
+            <a key={product.id} href={`/product/${product.id}`} className="group hover-lift">
               <div className="relative aspect-[3/4] overflow-hidden rounded-sm bg-card mb-4">
                 <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 {product.badge && <span className="absolute top-3 left-3 px-3 py-1 bg-accent text-accent-foreground text-[10px] tracking-wider uppercase font-medium rounded-sm">{product.badge}</span>}
