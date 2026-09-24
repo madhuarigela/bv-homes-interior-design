@@ -1,16 +1,58 @@
-# BV Homes — Interior Design
+# BV Homes Furniture
 
-A responsive web experience for BV Homes, focused on presenting interior and furniture offerings with a polished customer-facing interface.
+A responsive customer-facing furniture storefront built for **BV Homes**, designed to present furniture collections and product details with a polished, modern web experience.
+
+## Live demo
+
+**Vercel:** _Deployment link will be added after production deployment._
+
+## Features
+
+- Responsive furniture storefront
+- Home page with hero, categories, featured products, inspiration and trust sections
+- Product catalogue and product detail pages
+- Product enquiry flow
+- Client-side routing with React Router
+- Responsive navigation and mobile-friendly layout
+- Reusable UI components built with shadcn/ui and Radix UI
+- Type-safe development with TypeScript
+
+## Architecture
+
+```text
+BV Homes Furniture
+├── src/
+│   ├── components/
+│   │   ├── home/
+│   │   ├── layout/
+│   │   ├── product/
+│   │   └── ui/
+│   ├── data/
+│   ├── hooks/
+│   ├── lib/
+│   ├── pages/
+│   ├── App.tsx
+│   └── main.tsx
+├── public/
+├── index.html
+├── package.json
+├── tailwind.config.ts
+└── vite.config.ts
+```
 
 ## Tech stack
 
-- React
+- React 18
 - TypeScript
 - Vite
 - Tailwind CSS
 - shadcn/ui
+- Radix UI
+- React Router
+- TanStack Query
+- Vitest
 
-## Getting started
+## Local development
 
 ```bash
 git clone https://github.com/madhuarigela/bv-homes-interior-design.git
@@ -19,16 +61,31 @@ npm install
 npm run dev
 ```
 
-## Build
+## Production checks
 
 ```bash
+npm run lint
+npm run test
 npm run build
 ```
 
-## Project focus
+## Deployment
 
-The project is designed as a customer-facing web presence for BV Homes, with responsive layouts and a visual-first presentation.
+The project is configured as a Vite single-page application. Vercel can build it with:
+
+- **Framework:** Vite
+- **Build command:** `npm run build`
+- **Output directory:** `dist`
+- **Install command:** `npm install`
+
+A Vercel rewrite is included so direct navigation to routes such as `/shop` and `/product/:id` continues to work after deployment.
+
+## Project purpose
+
+BV Homes Furniture is a portfolio-quality customer-facing project demonstrating responsive frontend development, component architecture, routing, product presentation and deployment readiness.
 
 ## Author
 
-Madhu Arigela — GitHub: https://github.com/madhuarigela
+**Madhu Arigela**
+
+GitHub: https://github.com/madhuarigela
