@@ -1,16 +1,17 @@
 import { useParams, Link } from "react-router-dom";
-import { Heart, ShoppingBag, Star, Truck, ShieldCheck, ArrowLeft, Minus, Plus } from "lucide-react";
+import { Heart, ShoppingBag, Star, Truck, ArrowLeft, Minus, Plus } from "lucide-react";
 import { useState } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { products } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import InterestDialog from "@/components/product/InterestDialog";
+import { formatINR } from "@/lib/formatCurrency";
 
 const ProductDetailPage = () => {
   const { id } = useParams();
   const product = products.find((p) => p.id === id);
-  const [qty, setQty] = useState(1);
+  const [qty, setQty] = useState(1);\n  const [selectedImage, setSelectedImage] = useState("");
 
   if (!product) {
     return (
@@ -62,9 +63,9 @@ const ProductDetailPage = () => {
               </div>
 
               <div className="flex items-baseline gap-3 mb-6">
-                <span className="font-display text-3xl font-bold">${product.price.toLocaleString()}</span>
+                <span className="font-display text-3xl font-bold">{formatINR(product.price)}</span>
                 {product.originalPrice && (
-                  <span className="text-lg text-muted-foreground line-through">${product.originalPrice.toLocaleString()}</span>
+                  <span className="text-lg text-muted-foreground line-through">{formatINR(product.originalPrice)}</span>
                 )}
               </div>
 
