@@ -14,7 +14,7 @@ const TrendingSection = () => {
 
         <div className="space-y-6">
           {trending.slice(0, 3).map((product, idx) => (
-            <Link key={product.id} to={`/product/${product.id}`} className="group flex flex-col md:flex-row items-center gap-6 lg:gap-12 p-6 rounded-sm hover:bg-warm transition-colors duration-300">
+            <a key={product.id} href={`/product/${product.id}`} className="group flex flex-col md:flex-row items-center gap-6 lg:gap-12 p-6 rounded-sm hover:bg-warm transition-colors duration-300">
               <div className="w-full md:w-40 lg:w-52 aspect-square overflow-hidden rounded-sm flex-shrink-0">
                 <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               </div>
