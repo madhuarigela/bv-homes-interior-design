@@ -11,7 +11,7 @@ import { formatINR } from "@/lib/formatCurrency";
 const ProductDetailPage = () => {
   const { id } = useParams();
   const product = products.find((p) => p.id === id);
-  const [qty, setQty] = useState(1);
+  const [qty, setQty] = useState(1);\n  const [selectedImage, setSelectedImage] = useState("");
 
   if (!product) {
     return (
