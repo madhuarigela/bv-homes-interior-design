@@ -19,7 +19,7 @@ const Header = () => {
       <div className="container mx-auto px-4 lg:px-8">
         {/* Top bar */}
         <div className="hidden lg:flex items-center justify-center py-2 border-b border-border text-xs tracking-widest uppercase text-muted-foreground">
-          Made-to-Order Furniture · Visit BVHome Furnitures
+          Furniture Collection · Visit BVHome Furnitures
         </div>
 
         {/* Main nav */}
