@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Star, SlidersHorizontal, X } from "lucide-react";
 import Header from "@/components/layout/Header";
@@ -19,10 +19,14 @@ const ShopPage = () => {
   const [sortBy, setSortBy] = useState("popular");
   const [showFilters, setShowFilters] = useState(false);
 
+  useEffect(() => {
+    setSelectedCategory(categoryParam);
+  }, [categoryParam]);
+
   const filtered = useMemo(() => {
     let result = [...products];
     if (selectedCategory) result = result.filter((p) => p.category === selectedCategory);
-    if (search) result = result.filter((p) => p.name.toLowerCase().includes(search.toLowerCase()));
+    if (search) {\n      const term = search.toLowerCase().trim();\n      result = result.filter((p) => [p.name, p.material, p.style, p.color, p.category].some((value) => value.toLowerCase().includes(term)));\n    }
     if (sortBy === "newest") result.reverse();
     else result.sort((a, b) => b.reviews - a.reviews);
     return result;
@@ -37,7 +41,7 @@ const ShopPage = () => {
             <h1 className="font-display text-3xl lg:text-5xl font-semibold mb-2">
               {selectedCategory ? categories.find((c) => c.slug === selectedCategory)?.name || "Shop" : "Shop All"}
             </h1>
-            <p className="text-muted-foreground text-sm">{filtered.length} pieces found</p>
+            <p className="text-muted-foreground text-sm">{filtered.length} pieces available · Prices shared privately on WhatsApp</p>
           </div>
 
           <div className="flex flex-wrap items-center gap-3 mb-8">
@@ -81,7 +85,7 @@ const ShopPage = () => {
                   {product.badge && <span className="absolute top-3 left-3 px-3 py-1 bg-accent text-accent-foreground text-[10px] tracking-wider uppercase font-medium rounded-sm">{product.badge}</span>}
                 </div>
                 <p className="text-[10px] tracking-wider uppercase text-muted-foreground mb-1">{product.material}</p>
-                <h3 className="font-display text-sm lg:text-base font-medium mb-1 group-hover:text-accent transition-colors">{product.name}</h3>
+                <h3 className="font-display text-sm lg:text-base font-medium mb-1 group-hover:text-accent transition-colors">{product.name}</h3>\n                <span className="text-[10px] uppercase tracking-wider text-accent">View details →</span>
                 <div className="flex items-center gap-1">
                   {Array.from({ length: 5 }).map((_, i) => <Star key={i} className={`w-2.5 h-2.5 ${i < Math.floor(product.rating) ? "fill-accent text-accent" : "text-border"}`} />)}
                   <span className="text-[10px] text-muted-foreground ml-1">({product.reviews})</span>
