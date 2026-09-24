@@ -20,7 +20,7 @@ const Header = () => {
       <div className="container mx-auto px-4 lg:px-8">
         {/* Top bar */}
         <div className="hidden lg:flex items-center justify-center py-2 border-b border-border text-xs tracking-widest uppercase text-muted-foreground">
-          Complimentary Delivery on Orders Over $500 · Made-to-Order Available
+          Complimentary Delivery on Orders Over ₹40,000 · Made-to-Order Available
         </div>
 
         {/* Main nav */}
