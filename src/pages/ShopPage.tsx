@@ -34,7 +34,7 @@ const ShopPage = () => {
     if (term) {
       result = result.filter((p) =>
         [p.name, p.material, p.style, p.color, p.category].some((value) =>
-          value.toLowerCase().includes(term),
+          String(value ?? "").toLowerCase().includes(term),
         ),
       );
     }
