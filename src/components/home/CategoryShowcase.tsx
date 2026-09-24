@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { categories, products } from "@/data/products";
 
@@ -33,7 +32,7 @@ const CategoryShowcase = () => {
                   <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
-            </Link>
+            </a>
           ))}
         </div>
       </div>
