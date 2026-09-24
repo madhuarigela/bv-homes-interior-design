@@ -18,7 +18,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { toast } from "sonner";\nimport { formatINR } from "@/lib/formatCurrency";
+import { toast } from "sonner";
+import { formatINR } from "@/lib/formatCurrency";\nimport { formatINR } from "@/lib/formatCurrency";
 
 interface InterestDialogProps {
   productName: string;
