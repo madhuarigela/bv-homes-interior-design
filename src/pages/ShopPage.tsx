@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import { products, categories } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import { formatINR } from "@/lib/formatCurrency";
+import { formatINR } from "@/lib/formatCurrency";
 
 const sortOptions = [
   { label: "Popular", value: "popular" },
