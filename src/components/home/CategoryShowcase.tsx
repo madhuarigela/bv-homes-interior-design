@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { categories } from "@/data/products";
+import { categories, products } from "@/data/products";
 
 const CategoryShowcase = () => {
   return (
@@ -29,7 +29,7 @@ const CategoryShowcase = () => {
               <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-8">
                 <h3 className="font-display text-lg lg:text-2xl font-semibold text-background mb-1">{cat.name}</h3>
                 <div className="flex items-center gap-2 text-background/70 text-xs tracking-wider uppercase">
-                  <span>{cat.count} pieces</span>
+                  <span>{products.filter((product) => product.category === cat.slug).length} items</span>
                   <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
