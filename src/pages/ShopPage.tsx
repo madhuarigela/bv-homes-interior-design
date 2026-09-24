@@ -26,7 +26,10 @@ const ShopPage = () => {
   const filtered = useMemo(() => {
     let result = [...products];
     if (selectedCategory) result = result.filter((p) => p.category === selectedCategory);
-    if (search) {\n      const term = search.toLowerCase().trim();\n      result = result.filter((p) => [p.name, p.material, p.style, p.color, p.category].some((value) => value.toLowerCase().includes(term)));\n    }
+    if (search) {
+      const term = search.toLowerCase().trim();
+      result = result.filter((p) => [p.name, p.material, p.style, p.color, p.category].some((value) => value.toLowerCase().includes(term)));
+    }
     if (sortBy === "newest") result.reverse();
     else result.sort((a, b) => b.reviews - a.reviews);
     return result;
@@ -85,7 +88,8 @@ const ShopPage = () => {
                   {product.badge && <span className="absolute top-3 left-3 px-3 py-1 bg-accent text-accent-foreground text-[10px] tracking-wider uppercase font-medium rounded-sm">{product.badge}</span>}
                 </div>
                 <p className="text-[10px] tracking-wider uppercase text-muted-foreground mb-1">{product.material}</p>
-                <h3 className="font-display text-sm lg:text-base font-medium mb-1 group-hover:text-accent transition-colors">{product.name}</h3>\n                <span className="text-[10px] uppercase tracking-wider text-accent">View details →</span>
+                <h3 className="font-display text-sm lg:text-base font-medium mb-1 group-hover:text-accent transition-colors">{product.name}</h3>
+                <span className="text-[10px] uppercase tracking-wider text-accent">View details →</span>
                 <div className="flex items-center gap-1">
                   {Array.from({ length: 5 }).map((_, i) => <Star key={i} className={`w-2.5 h-2.5 ${i < Math.floor(product.rating) ? "fill-accent text-accent" : "text-border"}`} />)}
                   <span className="text-[10px] text-muted-foreground ml-1">({product.reviews})</span>
