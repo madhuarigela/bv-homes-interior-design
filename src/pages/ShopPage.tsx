@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { Star, SlidersHorizontal, X } from "lucide-react";
+import { SlidersHorizontal, X, MessageCircle } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { products, categories } from "@/data/products";
@@ -85,7 +85,7 @@ const ShopPage = () => {
               <Link key={product.id} to={`/product/${product.id}`} className="group hover-lift">
                 <div className="relative aspect-[3/4] overflow-hidden rounded-sm bg-card mb-4">
                   <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                  {product.badge && <span className="absolute top-3 left-3 px-3 py-1 bg-accent text-accent-foreground text-[10px] tracking-wider uppercase font-medium rounded-sm">{product.badge}</span>}
+                  {product.badge && product.badge.toLowerCase() === "new" && <span className="absolute top-3 left-3 px-3 py-1 bg-accent text-accent-foreground text-[10px] tracking-wider uppercase font-medium rounded-sm">New</span>}
                 </div>
                 <p className="text-[10px] tracking-wider uppercase text-muted-foreground mb-1">{product.material}</p>
                 <h3 className="font-display text-sm lg:text-base font-medium mb-1 group-hover:text-accent transition-colors">{product.name}</h3>
@@ -98,7 +98,7 @@ const ShopPage = () => {
             ))}
           </div>
 
-          {filtered.length === 0 && (
+          {filtered.length > 0 && (\n            <div className="mt-10 flex justify-center lg:hidden">\n              <a href="https://wa.me/917702702888?text=Hi%20BVHome%20Furnitures%2C%20I%27d%20like%20help%20choosing%20furniture." target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-medium text-white shadow-sm">\n                <MessageCircle className="w-4 h-4" /> Ask on WhatsApp\n              </a>\n            </div>\n          )}\n\n          {filtered.length === 0 && (
             <div className="text-center py-20">
               <p className="font-display text-xl mb-2">No furniture found</p>
               <p className="text-muted-foreground text-sm">Try adjusting your filters or search terms.</p>
