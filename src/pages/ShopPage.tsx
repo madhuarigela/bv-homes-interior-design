@@ -134,9 +134,9 @@ const ShopPage = () => {
 
           <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6">
             {filtered.map((product) => (
-              <Link
+              <a
                 key={product.id}
-                to={`/product/${product.id}`}
+                href={`/product/${product.id}`}
                 className="group hover-lift"
               >
                 <div className="relative aspect-[3/4] overflow-hidden rounded-sm bg-card mb-4">
