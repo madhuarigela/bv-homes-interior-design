@@ -135,7 +135,7 @@ const ProductDetailPage = () => {
               <h2 className="font-display text-2xl font-semibold mb-8">You May Also Like</h2>
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
                 {related.map((p) => (
-                  <Link key={p.id} to={`/product/${p.id}`} className="group hover-lift">
+                  <a key={p.id} href={`/product/${p.id}`} className="group hover-lift">
                     <div className="aspect-[3/4] overflow-hidden rounded-sm bg-card mb-3">
                       <img src={p.image} alt={p.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                     </div>
