@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Instagram, MapPin } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -57,9 +58,17 @@ const Footer = () => {
           </div>
           <div>
             <h4 className="font-display text-lg mb-4">BV Homes</h4>
-            <p className="text-sm text-primary-foreground/60 leading-relaxed">
-              Curating the finest furniture since 2015. Every piece tells a story of craftsmanship and elegance.
+            <p className="text-sm text-primary-foreground/60 leading-relaxed mb-5">
+              Curating beautiful furniture for homes with a focus on craftsmanship, comfort, and timeless design.
             </p>
+            <div className="flex items-center gap-3">
+              <a href="https://www.instagram.com/bvhomefurnitures/?stkn=MWtua3I0dXpxZTR6eQ==" target="_blank" rel="noopener noreferrer" aria-label="BV Homes Furniture on Instagram" className="inline-flex items-center gap-2 rounded-sm border border-primary-foreground/15 px-3 py-2 text-xs text-primary-foreground/70 hover:text-primary-foreground hover:border-primary-foreground/40 transition-colors">
+                <Instagram className="h-4 w-4" /> Instagram
+              </a>
+              <a href="https://maps.app.goo.gl/J6BhG5YMf72SfKBx5" target="_blank" rel="noopener noreferrer" aria-label="BV Homes Furniture on Google Maps" className="inline-flex items-center gap-2 rounded-sm border border-primary-foreground/15 px-3 py-2 text-xs text-primary-foreground/70 hover:text-primary-foreground hover:border-primary-foreground/40 transition-colors">
+                <MapPin className="h-4 w-4" /> Maps
+              </a>
+            </div>
           </div>
         </div>
         <div className="border-t border-primary-foreground/10 mt-12 pt-8 text-center text-xs text-primary-foreground/40 tracking-wider">
