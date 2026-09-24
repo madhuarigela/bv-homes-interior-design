@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Star } from "lucide-react";
 import { products } from "@/data/products";
 
@@ -13,7 +12,7 @@ const FeaturedProducts = () => {
             <p className="text-accent text-xs tracking-[0.3em] uppercase mb-3">Handpicked</p>
             <h2 className="font-display text-3xl lg:text-5xl font-semibold">Featured Furniture</h2>
           </div>
-          <Link to="/shop" className="text-sm tracking-wider uppercase text-muted-foreground hover:text-foreground transition-colors">View All →</Link>
+          <a href="/shop" className="text-sm tracking-wider uppercase text-muted-foreground hover:text-foreground transition-colors">View All →</a>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -31,7 +30,7 @@ const FeaturedProducts = () => {
                   <span className="text-xs text-muted-foreground ml-1">({product.reviews})</span>
                 </div>
               </div>
-            </Link>
+            </a>
           ))}
         </div>
       </div>
