@@ -12,9 +12,9 @@ const CategoryShowcase = () => {
 
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
           {categories.map((cat, idx) => (
-            <Link
+            <a
               key={cat.id}
-              to={`/shop?category=${cat.slug}`}
+              href={`/shop?category=${cat.slug}`}
               className={`group relative overflow-hidden rounded-sm ${
                 idx === 0 ? "col-span-2 lg:col-span-2 row-span-2 min-h-[400px] lg:min-h-[500px]" : "min-h-[200px] lg:min-h-[280px]"
               }`}
