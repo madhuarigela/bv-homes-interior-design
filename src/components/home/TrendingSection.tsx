@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { products } from "@/data/products";
-import { formatINR } from "@/lib/formatCurrency";
-import { formatINR } from "@/lib/formatCurrency";
 
 const TrendingSection = () => {
   const trending = products.filter((p) => p.trending);
@@ -17,11 +15,7 @@ const TrendingSection = () => {
 
         <div className="space-y-6">
           {trending.slice(0, 3).map((product, idx) => (
-            <Link
-              key={product.id}
-              to={`/product/${product.id}`}
-              className="group flex flex-col md:flex-row items-center gap-6 lg:gap-12 p-6 rounded-sm hover:bg-warm transition-colors duration-300"
-            >
+            <Link key={product.id} to={`/product/${product.id}`} className="group flex flex-col md:flex-row items-center gap-6 lg:gap-12 p-6 rounded-sm hover:bg-warm transition-colors duration-300">
               <div className="w-full md:w-40 lg:w-52 aspect-square overflow-hidden rounded-sm flex-shrink-0">
                 <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               </div>
@@ -30,10 +24,7 @@ const TrendingSection = () => {
                 <h3 className="font-display text-xl lg:text-2xl font-semibold mt-1 mb-2">{product.name}</h3>
                 <p className="text-muted-foreground text-sm max-w-lg">{product.description}</p>
               </div>
-              <div className="flex items-center gap-4">
-                <span className="font-display text-2xl font-bold">{formatINR(product.price)}</span>
-                <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
-              </div>
+              <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
             </Link>
           ))}
         </div>
