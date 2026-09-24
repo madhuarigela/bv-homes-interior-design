@@ -7,12 +7,12 @@ import { products } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import InterestDialog from "@/components/product/InterestDialog";
 import { formatINR } from "@/lib/formatCurrency";
-import { formatINR } from "@/lib/formatCurrency";
 
 const ProductDetailPage = () => {
   const { id } = useParams();
   const product = products.find((p) => p.id === id);
-  const [qty, setQty] = useState(1);\n  const [selectedImage, setSelectedImage] = useState("");\n  const [selectedImage, setSelectedImage] = useState("");
+  const [qty, setQty] = useState(1);
+  const [selectedImage, setSelectedImage] = useState("");
 
   if (!product) {
     return (
@@ -27,6 +27,8 @@ const ProductDetailPage = () => {
     );
   }
 
+  const gallery = product.images?.length ? product.images : [product.image];
+  const activeImage = selectedImage || gallery[0];
   const related = products.filter((p) => p.category === product.category && p.id !== product.id).slice(0, 4);
 
   return (
@@ -34,18 +36,31 @@ const ProductDetailPage = () => {
       <Header />
       <main className="pt-24 lg:pt-32 pb-20">
         <div className="container mx-auto px-4 lg:px-8">
-          {/* Breadcrumb */}
           <Link to="/shop" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-8 transition-colors">
             <ArrowLeft className="w-4 h-4" /> Back to Shop
           </Link>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
-            {/* Image */}
-            <div className="aspect-square overflow-hidden rounded-sm bg-card">
-              <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+            <div>
+              <div className="aspect-square overflow-hidden rounded-sm bg-card">
+                <img src={activeImage} alt={product.name} className="w-full h-full object-cover" />
+              </div>
+              {gallery.length > 1 && (
+                <div className="grid grid-cols-5 gap-2 mt-3">
+                  {gallery.slice(0, 5).map((image, index) => (
+                    <button
+                      key={image}
+                      onClick={() => setSelectedImage(image)}
+                      className={`aspect-square overflow-hidden rounded-sm border-2 ${activeImage === image ? "border-accent" : "border-transparent"}`}
+                      aria-label={`View image ${index + 1}`}
+                    >
+                      <img src={image} alt="" className="w-full h-full object-cover" />
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
-            {/* Info */}
             <div className="flex flex-col justify-center">
               {product.badge && (
                 <span className="inline-block self-start px-3 py-1 bg-accent text-accent-foreground text-[10px] tracking-wider uppercase font-medium rounded-sm mb-4">
@@ -72,27 +87,20 @@ const ProductDetailPage = () => {
 
               <p className="text-muted-foreground leading-relaxed mb-8">{product.description}</p>
 
-              {/* Specs */}
               <div className="grid grid-cols-2 gap-4 mb-8">
-                <div className="p-4 bg-warm rounded-sm">
-                  <p className="text-[10px] tracking-wider uppercase text-muted-foreground mb-1">Material</p>
-                  <p className="text-sm font-medium">{product.material}</p>
-                </div>
-                <div className="p-4 bg-warm rounded-sm">
-                  <p className="text-[10px] tracking-wider uppercase text-muted-foreground mb-1">Dimensions</p>
-                  <p className="text-sm font-medium">{product.dimensions}</p>
-                </div>
-                <div className="p-4 bg-warm rounded-sm">
-                  <p className="text-[10px] tracking-wider uppercase text-muted-foreground mb-1">Style</p>
-                  <p className="text-sm font-medium">{product.style}</p>
-                </div>
-                <div className="p-4 bg-warm rounded-sm">
-                  <p className="text-[10px] tracking-wider uppercase text-muted-foreground mb-1">Color</p>
-                  <p className="text-sm font-medium">{product.color}</p>
-                </div>
+                {[
+                  ["Material", product.material],
+                  ["Dimensions", product.dimensions],
+                  ["Style", product.style],
+                  ["Color", product.color],
+                ].map(([label, value]) => (
+                  <div key={label} className="p-4 bg-warm rounded-sm">
+                    <p className="text-[10px] tracking-wider uppercase text-muted-foreground mb-1">{label}</p>
+                    <p className="text-sm font-medium">{value}</p>
+                  </div>
+                ))}
               </div>
 
-              {/* Quantity & actions */}
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <div className="flex items-center border border-border rounded-sm">
                   <button onClick={() => setQty(Math.max(1, qty - 1))} className="px-4 py-3 hover:bg-warm transition-colors">
@@ -113,7 +121,6 @@ const ProductDetailPage = () => {
                 <InterestDialog productName={product.name} productPrice={product.price} />
               </div>
 
-              {/* Trust */}
               <div className="flex flex-col gap-3 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <Truck className="w-4 h-4 text-accent" />
@@ -127,7 +134,6 @@ const ProductDetailPage = () => {
             </div>
           </div>
 
-          {/* Related products */}
           {related.length > 0 && (
             <div className="mt-20">
               <h2 className="font-display text-2xl font-semibold mb-8">You May Also Like</h2>
