@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Search, ShoppingBag, Heart, User, Menu, X } from "lucide-react";
+import { Instagram, MapPin, MessageCircle, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [cartCount] = useState(0);
 
   const navLinks = [
     { label: "Home", to: "/" },
@@ -54,25 +53,17 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Actions */}
-          <div className="flex items-center gap-1 lg:gap-3">
-            <Button variant="ghost" size="icon" className="text-foreground/70 hover:text-foreground">
-              <Search className="w-4 h-4" />
-            </Button>
-            <Button variant="ghost" size="icon" className="hidden sm:inline-flex text-foreground/70 hover:text-foreground">
-              <Heart className="w-4 h-4" />
-            </Button>
-            <Button variant="ghost" size="icon" className="hidden sm:inline-flex text-foreground/70 hover:text-foreground">
-              <User className="w-4 h-4" />
-            </Button>
-            <Button variant="ghost" size="icon" className="relative text-foreground/70 hover:text-foreground">
-              <ShoppingBag className="w-4 h-4" />
-              {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-accent text-accent-foreground text-[10px] flex items-center justify-center font-bold">
-                  {cartCount}
-                </span>
-              )}
-            </Button>
+          <div className="flex items-center gap-1 lg:gap-2">
+            <a href="https://www.instagram.com/bvhomefurnitures/?stkn=MWtua3I0dXpxZTR6eQ==" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hidden sm:flex p-2 text-foreground/70 hover:text-foreground">
+              <Instagram className="w-4 h-4" />
+            </a>
+            <a href="https://maps.app.goo.gl/J6BhG5YMf72SfKBx5" target="_blank" rel="noopener noreferrer" aria-label="Google Maps" className="hidden sm:flex p-2 text-foreground/70 hover:text-foreground">
+              <MapPin className="w-4 h-4" />
+            </a>
+            <a href="https://wa.me/917702702888?text=Hi%20BVHome%20Furnitures%2C%20I%27d%20like%20to%20know%20more%20about%20your%20furniture." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="inline-flex items-center gap-2 rounded-sm bg-[#25D366] px-3 py-2 text-xs font-medium text-white hover:opacity-90">
+              <MessageCircle className="w-4 h-4" />
+              <span className="hidden sm:inline">WhatsApp</span>
+            </a>
           </div>
         </div>
       </div>
@@ -91,13 +82,10 @@ const Header = () => {
                 {link.label}
               </Link>
             ))}
-            <div className="flex gap-4 pt-4">
-              <Link to="#" className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Heart className="w-4 h-4" /> Wishlist
-              </Link>
-              <Link to="#" className="flex items-center gap-2 text-sm text-muted-foreground">
-                <User className="w-4 h-4" /> Account
-              </Link>
+            <div className="flex flex-wrap gap-3 pt-4">
+              <a href="https://www.instagram.com/bvhomefurnitures/?stkn=MWtua3I0dXpxZTR6eQ==" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground">Instagram</a>
+              <a href="https://maps.app.goo.gl/J6BhG5YMf72SfKBx5" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground">Visit Store</a>
+              <a href="https://wa.me/917702702888?text=Hi%20BVHome%20Furnitures%2C%20I%27d%20like%20to%20know%20more%20about%20your%20furniture." target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-green-600">WhatsApp</a>
             </div>
           </nav>
         </div>
