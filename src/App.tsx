@@ -1,18 +1,20 @@
-import { Component, type ReactNode } from "react";
+import { Component, type ReactNode, useEffect, useState } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Index from "./pages/Index";
 import ShopPage from "./pages/ShopPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient();
+const getRoute = () => {
+  const path = window.location.pathname.replace(/\\/+$/, "") || "/";
+  const search = window.location.search;
+  return { path, search };
+};
 
-class RouteErrorBoundary extends Component<
-  { children: ReactNode; locationKey: string },
+class AppErrorBoundary extends Component<
+  { children: ReactNode; routeKey: string },
   { hasError: boolean }
 > {
   state = { hasError: false };
@@ -21,14 +23,14 @@ class RouteErrorBoundary extends Component<
     return { hasError: true };
   }
 
-  componentDidUpdate(previousProps: { locationKey: string }) {
-    if (previousProps.locationKey !== this.props.locationKey && this.state.hasError) {
+  componentDidUpdate(previousProps: { routeKey: string }) {
+    if (previousProps.routeKey !== this.props.routeKey && this.state.hasError) {
       this.setState({ hasError: false });
     }
   }
 
   componentDidCatch(error: unknown) {
-    console.error("BVHome Furnitures route error:", error);
+    console.error("BVHome Furnitures application error:", error);
   }
 
   render() {
@@ -40,7 +42,7 @@ class RouteErrorBoundary extends Component<
               Something went wrong
             </h1>
             <p className="text-muted-foreground mb-6">
-              This page could not be loaded. Please return home and try again.
+              We couldn't load this page. Please return to the home page.
             </p>
             <a
               href="/"
@@ -57,31 +59,38 @@ class RouteErrorBoundary extends Component<
   }
 }
 
-const ProtectedRoutes = () => {
-  const location = useLocation();
+const RoutedApp = () => {
+  const [route, setRoute] = useState(getRoute);
 
-  return (
-    <RouteErrorBoundary locationKey={`${location.pathname}${location.search}`}>
-      <Routes>
-        <Route path="/" element={<Index />} />
-        <Route path="/shop" element={<ShopPage />} />
-        <Route path="/product/:id" element={<ProductDetailPage />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </RouteErrorBoundary>
-  );
+  useEffect(() => {
+    const syncRoute = () => setRoute(getRoute());
+    window.addEventListener("popstate", syncRoute);
+    return () => window.removeEventListener("popstate", syncRoute);
+  }, []);
+
+  const routeKey = route.path + route.search;
+
+  let page: ReactNode;
+
+  if (route.path === "/") {
+    page = <Index />;
+  } else if (route.path === "/shop") {
+    page = <ShopPage />;
+  } else if (/^\/product\/[^/]+$/.test(route.path)) {
+    page = <ProductDetailPage />;
+  } else {
+    page = <NotFound />;
+  }
+
+  return <AppErrorBoundary routeKey={routeKey}>{page}</AppErrorBoundary>;
 };
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <ProtectedRoutes />
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+  <TooltipProvider>
+    <Toaster />
+    <Sonner />
+    <RoutedApp />
+  </TooltipProvider>
 );
 
 export default App;
