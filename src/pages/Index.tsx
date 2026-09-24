@@ -6,7 +6,6 @@ import FeaturedProducts from "@/components/home/FeaturedProducts";
 import TrendingSection from "@/components/home/TrendingSection";
 import InspirationSection from "@/components/home/InspirationSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
-import TrustBadges from "@/components/home/TrustBadges";
 
 const Index = () => {
   return (
@@ -14,7 +13,6 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection />
-        <TrustBadges />
         <CategoryShowcase />
         <FeaturedProducts />
         <TrendingSection />
