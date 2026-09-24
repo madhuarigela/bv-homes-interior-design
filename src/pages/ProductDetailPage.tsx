@@ -7,11 +7,12 @@ import { products } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import InterestDialog from "@/components/product/InterestDialog";
 import { formatINR } from "@/lib/formatCurrency";
+import { formatINR } from "@/lib/formatCurrency";
 
 const ProductDetailPage = () => {
   const { id } = useParams();
   const product = products.find((p) => p.id === id);
-  const [qty, setQty] = useState(1);\n  const [selectedImage, setSelectedImage] = useState("");
+  const [qty, setQty] = useState(1);\n  const [selectedImage, setSelectedImage] = useState("");\n  const [selectedImage, setSelectedImage] = useState("");
 
   if (!product) {
     return (
@@ -141,7 +142,7 @@ const ProductDetailPage = () => {
                       <img src={p.image} alt={p.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <h3 className="font-display text-sm font-medium group-hover:text-accent transition-colors">{p.name}</h3>
-                    <span className="font-display font-semibold text-sm">${p.price.toLocaleString()}</span>
+                    <span className="font-display font-semibold text-sm">{formatINR(p.price)}</span>
                   </Link>
                 ))}
               </div>
