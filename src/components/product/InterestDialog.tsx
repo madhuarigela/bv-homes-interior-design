@@ -19,12 +19,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "sonner";
-import { formatINR } from "@/lib/formatCurrency";\nimport { formatINR } from "@/lib/formatCurrency";
+import { formatINR } from "@/lib/formatCurrency";
 
 interface InterestDialogProps {
   productName: string;
   productPrice: number;
-  adminPhone?: string; // WhatsApp number with country code, e.g. "1234567890"
+  adminPhone?: string;
   adminEmail?: string;
 }
 
@@ -35,13 +35,7 @@ const InterestDialog = ({
   adminEmail = "admin@bvhomes.com",
 }: InterestDialogProps) => {
   const [open, setOpen] = useState(false);
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    budget: "",
-    timeline: "",
-  });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", budget: "", timeline: "" });
   const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (field: string, value: string) => {
@@ -58,7 +52,8 @@ const InterestDialog = ({
 
     setSubmitting(true);
 
-    const message = `🏠 *BV Homes — Product Inquiry*%0A%0A` +
+    const message =
+      `🏠 *BV Homes — Product Inquiry*%0A%0A` +
       `*Product:* ${encodeURIComponent(productName)}%0A` +
       `*Price:* ${encodeURIComponent(formatINR(productPrice))}%0A%0A` +
       `*Customer Details*%0A` +
@@ -68,41 +63,23 @@ const InterestDialog = ({
       `Budget: ${encodeURIComponent(form.budget || "Not specified")}%0A` +
       `Timeline: ${encodeURIComponent(form.timeline || "Not specified")}`;
 
-    // Send WhatsApp to admin
-    window.open(
-      `https://wa.me/${adminPhone}?text=${message}`,
-      "_blank"
-    );
+    window.open(`https://wa.me/${adminPhone}?text=${message}`, "_blank");
 
-    // Send email to admin
     const emailSubject = encodeURIComponent(`BV Homes Inquiry: ${productName}`);
     const emailBody = encodeURIComponent(
-      `Product Inquiry — BV Homes\n\n` +
-      `Product: ${productName}\n` +
-      `Price: ${formatINR(productPrice)}\n\n` +
-      `Customer Details\n` +
-      `Name: ${form.name}\n` +
-      `Email: ${form.email}\n` +
-      `Phone: ${form.phone}\n` +
-      `Budget: ${form.budget || "Not specified"}\n` +
-      `Timeline: ${form.timeline || "Not specified"}`
+      `Product Inquiry — BV Homes\n\nProduct: ${productName}\nPrice: ${formatINR(productPrice)}\n\nCustomer Details\nName: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nBudget: ${form.budget || "Not specified"}\nTimeline: ${form.timeline || "Not specified"}`
     );
     window.open(`mailto:${adminEmail}?subject=${emailSubject}&body=${emailBody}`, "_blank");
 
-    // Acknowledgement to user via WhatsApp
-    const ackMessage = `Hi ${encodeURIComponent(form.name)}! 👋%0A%0A` +
+    const ackMessage =
+      `Hi ${encodeURIComponent(form.name)}! 👋%0A%0A` +
       `Thank you for your interest in *${encodeURIComponent(productName)}* from BV Homes.%0A` +
-      `Our team will reach out to you shortly.%0A%0A` +
-      `— BV Homes Team`;
+      `Our team will reach out to you shortly.%0A%0A— BV Homes Team`;
     window.open(`https://wa.me/${encodeURIComponent(form.phone)}?text=${ackMessage}`, "_blank");
 
-    // Acknowledgement to user via email
     const userEmailSubject = encodeURIComponent(`Your BV Homes Inquiry: ${productName}`);
     const userEmailBody = encodeURIComponent(
-      `Hi ${form.name},\n\n` +
-      `Thank you for your interest in "${productName}" (${formatINR(productPrice)}).\n\n` +
-      `We've received your inquiry and our team will get back to you shortly.\n\n` +
-      `Best regards,\nBV Homes Team`
+      `Hi ${form.name},\n\nThank you for your interest in "${productName}" (${formatINR(productPrice)}).\n\nWe've received your inquiry and our team will get back to you shortly.\n\nBest regards,\nBV Homes Team`
     );
     window.open(`mailto:${form.email}?subject=${userEmailSubject}&body=${userEmailBody}`, "_blank");
 
@@ -115,10 +92,7 @@ const InterestDialog = ({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button
-          variant="outline"
-          className="gap-2 h-12 border-accent text-accent hover:bg-accent hover:text-accent-foreground tracking-wider uppercase text-sm"
-        >
+        <Button variant="outline" className="gap-2 h-12 border-accent text-accent hover:bg-accent hover:text-accent-foreground tracking-wider uppercase text-sm">
           <HandHeart className="w-4 h-4" />
           I'm Interested
         </Button>
@@ -126,49 +100,25 @@ const InterestDialog = ({
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="font-display text-xl">Interested in {productName}?</DialogTitle>
-          <DialogDescription>
-            Fill in your details and we'll get back to you via WhatsApp & Email.
-          </DialogDescription>
+          <DialogDescription>Fill in your details and we'll get back to you via WhatsApp & Email.</DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4 mt-2">
           <div className="space-y-2">
             <Label htmlFor="interest-name">Name *</Label>
-            <Input
-              id="interest-name"
-              placeholder="Your full name"
-              value={form.name}
-              onChange={(e) => handleChange("name", e.target.value)}
-              required
-            />
+            <Input id="interest-name" placeholder="Your full name" value={form.name} onChange={(e) => handleChange("name", e.target.value)} required />
           </div>
           <div className="space-y-2">
             <Label htmlFor="interest-email">Email *</Label>
-            <Input
-              id="interest-email"
-              type="email"
-              placeholder="you@email.com"
-              value={form.email}
-              onChange={(e) => handleChange("email", e.target.value)}
-              required
-            />
+            <Input id="interest-email" type="email" placeholder="you@email.com" value={form.email} onChange={(e) => handleChange("email", e.target.value)} required />
           </div>
           <div className="space-y-2">
             <Label htmlFor="interest-phone">Phone (with country code) *</Label>
-            <Input
-              id="interest-phone"
-              type="tel"
-              placeholder="+91 98765 43210"
-              value={form.phone}
-              onChange={(e) => handleChange("phone", e.target.value)}
-              required
-            />
+            <Input id="interest-phone" type="tel" placeholder="+91 98765 43210" value={form.phone} onChange={(e) => handleChange("phone", e.target.value)} required />
           </div>
           <div className="space-y-2">
             <Label htmlFor="interest-budget">Budget Range</Label>
             <Select value={form.budget} onValueChange={(v) => handleChange("budget", v)}>
-              <SelectTrigger id="interest-budget">
-                <SelectValue placeholder="Select budget range" />
-              </SelectTrigger>
+              <SelectTrigger id="interest-budget"><SelectValue placeholder="Select budget range" /></SelectTrigger>
               <SelectContent>
                 <SelectItem value="under-25000">Under ₹25,000</SelectItem>
                 <SelectItem value="25000-75000">₹25,000 – ₹75,000</SelectItem>
@@ -181,9 +131,7 @@ const InterestDialog = ({
           <div className="space-y-2">
             <Label htmlFor="interest-timeline">Purchase Timeline</Label>
             <Select value={form.timeline} onValueChange={(v) => handleChange("timeline", v)}>
-              <SelectTrigger id="interest-timeline">
-                <SelectValue placeholder="When do you need it?" />
-              </SelectTrigger>
+              <SelectTrigger id="interest-timeline"><SelectValue placeholder="When do you need it?" /></SelectTrigger>
               <SelectContent>
                 <SelectItem value="asap">As soon as possible</SelectItem>
                 <SelectItem value="1-2-weeks">1–2 weeks</SelectItem>
@@ -193,11 +141,7 @@ const InterestDialog = ({
               </SelectContent>
             </Select>
           </div>
-          <Button
-            type="submit"
-            disabled={submitting}
-            className="w-full h-12 bg-accent hover:bg-accent/90 text-accent-foreground tracking-wider uppercase text-sm"
-          >
+          <Button type="submit" disabled={submitting} className="w-full h-12 bg-accent hover:bg-accent/90 text-accent-foreground tracking-wider uppercase text-sm">
             {submitting ? "Submitting…" : "Submit Inquiry"}
           </Button>
         </form>
