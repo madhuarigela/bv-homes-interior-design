@@ -20,7 +20,7 @@ const Header = () => {
       <div className="container mx-auto px-4 lg:px-8">
         {/* Top bar */}
         <div className="hidden lg:flex items-center justify-center py-2 border-b border-border text-xs tracking-widest uppercase text-muted-foreground">
-          Complimentary Delivery on Orders Over ₹40,000 · Made-to-Order Available
+          Made-to-Order Furniture · Visit BVHome Furnitures
         </div>
 
         {/* Main nav */}
@@ -37,7 +37,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
             <span className="font-display text-xl lg:text-2xl font-bold tracking-tight">
-              BV<span className="text-gradient-gold">Homes</span>
+              BVHome <span className="text-gradient-gold">Furnitures</span>
             </span>
           </Link>
 
