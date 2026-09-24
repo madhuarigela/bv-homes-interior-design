@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import categoryBedroom from "@/assets/category-bedroom.jpg";
 import categoryDining from "@/assets/category-dining.jpg";
 import heroImage from "@/assets/hero-living-room.jpg";
@@ -22,7 +23,7 @@ const InspirationSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
           {rooms.map((room) => (
-            <div key={room.label} className="group relative aspect-[4/5] overflow-hidden rounded-sm cursor-pointer">
+            <Link key={room.label} to={room.label.includes("Bedroom") ? "/shop?category=beds" : room.label.includes("Dining") ? "/shop?category=dining" : "/shop?category=sofas"} className="group relative aspect-[4/5] overflow-hidden rounded-sm cursor-pointer">
               <img
                 src={room.image}
                 alt={room.label}
@@ -34,7 +35,7 @@ const InspirationSection = () => {
                   {room.label}
                 </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
