@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Heart, ShoppingBag, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import { products } from "@/data/products";
 
 const FeaturedProducts = () => {
@@ -22,10 +22,6 @@ const FeaturedProducts = () => {
               <div className="relative aspect-[3/4] overflow-hidden rounded-sm bg-card mb-4">
                 <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 {product.badge && <span className="absolute top-3 left-3 px-3 py-1 bg-accent text-accent-foreground text-[10px] tracking-wider uppercase font-medium rounded-sm">{product.badge}</span>}
-                <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <button className="w-9 h-9 bg-background/90 rounded-full flex items-center justify-center hover:bg-background"><Heart className="w-4 h-4" /></button>
-                  <button className="w-9 h-9 bg-background/90 rounded-full flex items-center justify-center hover:bg-background"><ShoppingBag className="w-4 h-4" /></button>
-                </div>
               </div>
               <div>
                 <p className="text-[10px] tracking-wider uppercase text-muted-foreground mb-1">{product.material}</p>
