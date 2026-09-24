@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Heart, ShoppingBag, Star } from "lucide-react";
 import { products } from "@/data/products";
+import { formatINR } from "@/lib/formatCurrency";
 
 const FeaturedProducts = () => {
   const featured = products.filter((p) => p.featured);
@@ -60,9 +61,9 @@ const FeaturedProducts = () => {
                   <span className="text-xs text-muted-foreground ml-1">({product.reviews})</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="font-display text-lg font-semibold">${product.price.toLocaleString()}</span>
+                  <span className="font-display text-lg font-semibold">{formatINR(product.price)}</span>
                   {product.originalPrice && (
-                    <span className="text-sm text-muted-foreground line-through">${product.originalPrice.toLocaleString()}</span>
+                    <span className="text-sm text-muted-foreground line-through">{formatINR(product.originalPrice)}</span>
                   )}
                 </div>
               </div>
