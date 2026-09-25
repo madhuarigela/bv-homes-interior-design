@@ -360,7 +360,25 @@ export const products: Product[] = [
     featured: true,
     trending: true,
   },
-
+  {
+    id: "18",
+    name: "L-Shape Sofa",
+    category: "sofas",
+    price: 0,
+    image: "/products/l-shape-7-seater.jpg",
+    images: ["/products/l-shape-7-seater.jpg"],
+    description: "Modern L-shaped sofa designed for spacious family living rooms. Contact BVHome Furnitures for available colours, customization, current price and delivery details.",
+    material: "Premium Fabric & Solid Wood Frame",
+    style: "Modern",
+    color: "Customizable",
+    dimensions: "5–7 Seater L-Shape",
+    inStock: true,
+    rating: 4.8,
+    reviews: 0,
+    badge: "New",
+    featured: true,
+    trending: true,
+  },
 ];
 
 export const testimonials = [
