@@ -28,7 +28,7 @@ const InterestDialog = ({
   productName,
 }: InterestDialogProps) => {
   const [open, setOpen] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", phone: "", budget: "", timeline: "" });
+  const [form, setForm] = useState({ name: "", phone: "", budget: "", timeline: "" });
   const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (field: string, value: string) => {
@@ -38,7 +38,7 @@ const InterestDialog = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!form.name || !form.email || !form.phone) {
+    if (!form.name || !form.phone) {
       toast.error("Please fill in all required fields.");
       return;
     }
@@ -51,7 +51,6 @@ const InterestDialog = ({
       `*Price:* Please share the current price.%0A%0A` +
       `*Customer Details*%0A` +
       `Name: ${encodeURIComponent(form.name)}%0A` +
-      `Email: ${encodeURIComponent(form.email)}%0A` +
       `Phone: ${encodeURIComponent(form.phone)}%0A` +
       `Budget: ${encodeURIComponent(form.budget || "Not specified")}%0A` +
       `Timeline: ${encodeURIComponent(form.timeline || "Not specified")}`;
@@ -59,7 +58,7 @@ const InterestDialog = ({
     window.open(`https://wa.me/917702702888?text=${message}`, "_blank");
 
     toast.success("Inquiry sent to BVHome Furnitures on WhatsApp.");
-    setForm({ name: "", email: "", phone: "", budget: "", timeline: "" });
+    setForm({ name: "", phone: "", budget: "", timeline: "" });
     setSubmitting(false);
     setOpen(false);
   };
@@ -81,10 +80,6 @@ const InterestDialog = ({
           <div className="space-y-2">
             <Label htmlFor="interest-name">Name *</Label>
             <Input id="interest-name" placeholder="Your full name" value={form.name} onChange={(e) => handleChange("name", e.target.value)} required />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="interest-email">Email *</Label>
-            <Input id="interest-email" type="email" placeholder="you@email.com" value={form.email} onChange={(e) => handleChange("email", e.target.value)} required />
           </div>
           <div className="space-y-2">
             <Label htmlFor="interest-phone">Phone (with country code) *</Label>
