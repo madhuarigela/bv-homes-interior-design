@@ -5,8 +5,8 @@ import Footer from "@/components/layout/Footer";
 import { products, categories } from "@/data/products";
 
 const sortOptions = [
-  { label: "Popular", value: "popular" },
-  { label: "Newest", value: "newest" },
+  { label: "Name: A–Z", value: "name-asc" },
+  { label: "Name: Z–A", value: "name-desc" },
 ];
 
 const ShopPage = () => {
@@ -39,10 +39,10 @@ const ShopPage = () => {
 
     result = [...result];
 
-    if (sortBy === "newest") {
-      result.reverse();
+    if (sortBy === "name-desc") {
+      result.sort((a, b) => b.name.localeCompare(a.name));
     } else {
-      result.sort((a, b) => Number(b.reviews || 0) - Number(a.reviews || 0));
+      result.sort((a, b) => a.name.localeCompare(b.name));
     }
 
     return result;
@@ -63,7 +63,7 @@ const ShopPage = () => {
               {categoryName}
             </h1>
             <p className="text-muted-foreground text-sm">
-              {filtered.length} items available · Prices shared privately on WhatsApp
+              {filtered.length} items · Contact us on WhatsApp for current price, availability and delivery details
             </p>
           </div>
 
@@ -152,11 +152,7 @@ const ShopPage = () => {
                       decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
-                    {product.badge?.toLowerCase() === "new" && (
-                      <span className="absolute top-3 left-3 px-3 py-1 bg-accent text-accent-foreground text-[10px] tracking-wider uppercase font-medium rounded-sm">
-                        New
-                      </span>
-                    )}
+                    
                   </div>
 
                   <p className="text-[10px] tracking-wider uppercase text-muted-foreground mb-1">
