@@ -340,8 +340,7 @@ export const products: Product[] = [
     inStock: true,
     rating: 4.5,
     reviews: 29,
-  }
-
+  },
   {
     id: "17",
     name: "3+2 Sofa Set",
