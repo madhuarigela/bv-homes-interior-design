@@ -342,6 +342,26 @@ export const products: Product[] = [
     reviews: 29,
   }
 
+  {
+    id: "17",
+    name: "3+2 Sofa Set",
+    category: "sofas",
+    price: 0,
+    image: "/products/3plus2-sofa.jpg",
+    images: ["/products/3plus2-sofa.jpg"],
+    description: "Comfortable 3+2 sofa set suitable for family living rooms. Contact BVHome Furnitures for available colours, customization, current price and delivery details.",
+    material: "Upholstery & Solid Wood Frame",
+    style: "Contemporary",
+    color: "Brown",
+    dimensions: "3-Seater + 2-Seater",
+    inStock: true,
+    rating: 4.8,
+    reviews: 0,
+    badge: "New",
+    featured: true,
+    trending: true,
+  },
+
 ];
 
 export const testimonials = [
