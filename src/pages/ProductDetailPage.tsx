@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowLeft, MessageCircle, Star } from "lucide-react";
+import { ArrowLeft, MessageCircle } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { products } from "@/data/products";
@@ -94,29 +94,9 @@ const ProductDetailPage = () => {
             </div>
 
             <div className="flex flex-col justify-center">
-              {product.badge?.toLowerCase() === "new" && (
-                <span className="inline-block self-start px-3 py-1 bg-accent text-accent-foreground text-[10px] tracking-wider uppercase font-medium rounded-sm mb-4">
-                  New
-                </span>
-              )}
-
-              <h1 className="font-display text-3xl lg:text-4xl font-semibold mb-3">
+<h1 className="font-display text-3xl lg:text-4xl font-semibold mb-3">
                 {product.name}
               </h1>
-
-              <div className="flex items-center gap-2 mb-6">
-                <div className="flex items-center gap-1">
-                  {Array.from({ length: 5 }).map((_, index) => (
-                    <Star
-                      key={index}
-                      className={`w-4 h-4 ${index < Math.floor(Number(product.rating || 0)) ? "fill-accent text-accent" : "text-border"}`}
-                    />
-                  ))}
-                </div>
-                <span className="text-sm text-muted-foreground">
-                  {product.rating} ({product.reviews} reviews)
-                </span>
-              </div>
 
               <p className="text-muted-foreground leading-relaxed mb-8">
                 {product.description}
