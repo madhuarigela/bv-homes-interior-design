@@ -58,13 +58,7 @@ const InterestDialog = ({
 
     window.open(`https://wa.me/917702702888?text=${message}`, "_blank");
 
-    const ackMessage =
-      `Hi ${encodeURIComponent(form.name)}! 👋%0A%0A` +
-      `Thank you for your interest in *${encodeURIComponent(productName)}* from BVHome Furnitures.%0A` +
-      `Our team will reach out to you shortly.%0A%0A— BV Homes Team`;
-    window.open(`https://wa.me/${encodeURIComponent(form.phone)}?text=${ackMessage}`, "_blank");
-
-    toast.success("Inquiry submitted! Check your WhatsApp and email.");
+    toast.success("Inquiry sent to BVHome Furnitures on WhatsApp.");
     setForm({ name: "", email: "", phone: "", budget: "", timeline: "" });
     setSubmitting(false);
     setOpen(false);
@@ -81,7 +75,7 @@ const InterestDialog = ({
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="font-display text-xl">Interested in {productName}?</DialogTitle>
-          <DialogDescription>Fill in your details and we'll get back to you via WhatsApp & Email.</DialogDescription>
+          <DialogDescription>Fill in your details and we'll contact you on WhatsApp.</DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4 mt-2">
           <div className="space-y-2">
@@ -97,9 +91,9 @@ const InterestDialog = ({
             <Input id="interest-phone" type="tel" placeholder="+91 98765 43210" value={form.phone} onChange={(e) => handleChange("phone", e.target.value)} required />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="interest-budget">Budget Range</Label>
+            <Label htmlFor="interest-budget">Budget Preference</Label>
             <Select value={form.budget} onValueChange={(v) => handleChange("budget", v)}>
-              <SelectTrigger id="interest-budget"><SelectValue placeholder="Select budget range" /></SelectTrigger>
+              <SelectTrigger id="interest-budget"><SelectValue placeholder="Select preference" /></SelectTrigger>
               <SelectContent>
                 <SelectItem value="flexible">Flexible</SelectItem>
                 <SelectItem value="standard">Standard</SelectItem>
