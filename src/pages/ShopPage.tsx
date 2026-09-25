@@ -15,7 +15,7 @@ const ShopPage = () => {
 
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
-  const [sortBy, setSortBy] = useState("popular");
+  const [sortBy, setSortBy] = useState("name-asc");
   const [showFilters, setShowFilters] = useState(false);
 
   const filtered = useMemo(() => {
