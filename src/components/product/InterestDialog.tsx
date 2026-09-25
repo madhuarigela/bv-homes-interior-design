@@ -19,20 +19,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "sonner";
-import { formatINR } from "@/lib/formatCurrency";
 
 interface InterestDialogProps {
   productName: string;
-  productPrice: number;
-  adminPhone?: string;
-  adminEmail?: string;
 }
 
 const InterestDialog = ({
   productName,
-  productPrice,
-  adminPhone = "1234567890",
-  adminEmail = "admin@bvhomes.com",
 }: InterestDialogProps) => {
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "", budget: "", timeline: "" });
@@ -55,7 +48,7 @@ const InterestDialog = ({
     const message =
       `🏠 *BV Homes — Product Inquiry*%0A%0A` +
       `*Product:* ${encodeURIComponent(productName)}%0A` +
-      `*Price:* ${encodeURIComponent(formatINR(productPrice))}%0A%0A` +
+      `*Price:* Please share the current price.%0A%0A` +
       `*Customer Details*%0A` +
       `Name: ${encodeURIComponent(form.name)}%0A` +
       `Email: ${encodeURIComponent(form.email)}%0A` +
@@ -63,25 +56,13 @@ const InterestDialog = ({
       `Budget: ${encodeURIComponent(form.budget || "Not specified")}%0A` +
       `Timeline: ${encodeURIComponent(form.timeline || "Not specified")}`;
 
-    window.open(`https://wa.me/${adminPhone}?text=${message}`, "_blank");
-
-    const emailSubject = encodeURIComponent(`BV Homes Inquiry: ${productName}`);
-    const emailBody = encodeURIComponent(
-      `Product Inquiry — BV Homes\n\nProduct: ${productName}\nPrice: ${formatINR(productPrice)}\n\nCustomer Details\nName: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nBudget: ${form.budget || "Not specified"}\nTimeline: ${form.timeline || "Not specified"}`
-    );
-    window.open(`mailto:${adminEmail}?subject=${emailSubject}&body=${emailBody}`, "_blank");
+    window.open(`https://wa.me/917702702888?text=${message}`, "_blank");
 
     const ackMessage =
       `Hi ${encodeURIComponent(form.name)}! 👋%0A%0A` +
-      `Thank you for your interest in *${encodeURIComponent(productName)}* from BV Homes.%0A` +
+      `Thank you for your interest in *${encodeURIComponent(productName)}* from BVHome Furnitures.%0A` +
       `Our team will reach out to you shortly.%0A%0A— BV Homes Team`;
     window.open(`https://wa.me/${encodeURIComponent(form.phone)}?text=${ackMessage}`, "_blank");
-
-    const userEmailSubject = encodeURIComponent(`Your BV Homes Inquiry: ${productName}`);
-    const userEmailBody = encodeURIComponent(
-      `Hi ${form.name},\n\nThank you for your interest in "${productName}" (${formatINR(productPrice)}).\n\nWe've received your inquiry and our team will get back to you shortly.\n\nBest regards,\nBV Homes Team`
-    );
-    window.open(`mailto:${form.email}?subject=${userEmailSubject}&body=${userEmailBody}`, "_blank");
 
     toast.success("Inquiry submitted! Check your WhatsApp and email.");
     setForm({ name: "", email: "", phone: "", budget: "", timeline: "" });
@@ -120,11 +101,10 @@ const InterestDialog = ({
             <Select value={form.budget} onValueChange={(v) => handleChange("budget", v)}>
               <SelectTrigger id="interest-budget"><SelectValue placeholder="Select budget range" /></SelectTrigger>
               <SelectContent>
-                <SelectItem value="under-25000">Under ₹25,000</SelectItem>
-                <SelectItem value="25000-75000">₹25,000 – ₹75,000</SelectItem>
-                <SelectItem value="75000-150000">₹75,000 – ₹1,50,000</SelectItem>
-                <SelectItem value="150000-300000">₹1,50,000 – ₹3,00,000</SelectItem>
-                <SelectItem value="over-300000">Over ₹3,00,000</SelectItem>
+                <SelectItem value="flexible">Flexible</SelectItem>
+                <SelectItem value="standard">Standard</SelectItem>
+                <SelectItem value="premium">Premium</SelectItem>
+                <SelectItem value="not-sure">Not sure</SelectItem>
               </SelectContent>
             </Select>
           </div>
