@@ -5,7 +5,6 @@ import CategoryShowcase from "@/components/home/CategoryShowcase";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import TrendingSection from "@/components/home/TrendingSection";
 import InspirationSection from "@/components/home/InspirationSection";
-import TestimonialsSection from "@/components/home/TestimonialsSection";
 
 const Index = () => {
   return (
@@ -17,7 +16,6 @@ const Index = () => {
         <FeaturedProducts />
         <TrendingSection />
         <InspirationSection />
-        <TestimonialsSection />
       </main>
       <Footer />
     </div>
